@@ -10,6 +10,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using UserService.BLL;
+using UserService.BLL.Interfaces;
+using UserService.DAL;
+using UserService.DAL.Interfaces;
 
 namespace UserService
 {
@@ -18,6 +22,9 @@ namespace UserService
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+
+
+
         }
 
         public IConfiguration Configuration { get; }
@@ -26,6 +33,8 @@ namespace UserService
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddSingleton<IHelloWorldRepo, HelloWorldRepo>();
+            services.AddSingleton<IHello, Hello>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -34,6 +43,11 @@ namespace UserService
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+            }
+            else
+            {
+                app.UseExceptionHandler();
+                app.UseHsts();
             }
 
             app.UseHttpsRedirection();
