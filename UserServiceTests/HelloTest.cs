@@ -5,6 +5,7 @@ using Microsoft.Extensions.Logging;
 using UserService.BLL;
 using UserService.DAL;
 using System.Threading.Tasks;
+using UserService.DAL.Interfaces;
 
 namespace UserServiceTests
 {
@@ -18,10 +19,10 @@ namespace UserServiceTests
         public void Setup()
         {
             // Mock logger (unused, so no setup)
-            var mockLogger = new Mock<Logger<HelloController>>();
+            var mockLogger = new Mock<ILogger<HelloController>>();
 
             // Create our mock HelloWorldRepo object, with explicitly defined behaviour (loose is default anyway)
-            Mock<HelloWorldRepo> mockHelloWorldRepo = new Mock<HelloWorldRepo>(MockBehavior.Loose);
+            Mock<IHelloWorldRepo> mockHelloWorldRepo = new Mock<IHelloWorldRepo>(MockBehavior.Loose);
                 
             // Setup Mock async get method
             mockHelloWorldRepo.Setup(arg => arg.Get())
@@ -36,10 +37,10 @@ namespace UserServiceTests
         }
 
         [Test]
-        public async void Test_Get_Returns()
+        public void Test_Get_Returns()
         {
             // Act
-            var result = await helloController.Get();
+            var result = helloController.Get().Result;
             
             // Assert
             Assert.AreEqual(Hello_World, result);
