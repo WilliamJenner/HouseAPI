@@ -38,4 +38,4 @@ steps:
       **\*test*.dll
       !**\*TestAdapter.dll
       !**\obj\**
-    searchFolder: '$(System.DefaultWorkingDirectory)'
+    searchFolder: '$(build.artifactStagingDirectory)'
