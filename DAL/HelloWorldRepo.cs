@@ -1,21 +1,19 @@
-﻿using Dapper;
-using System.Threading.Tasks;
-using UserService.DAL.Interfaces;
-
-namespace UserService.DAL
+﻿namespace UserService.DAL
 {
+    using System.Threading.Tasks;
+    using Dapper;
+    using UserService.DAL.Interfaces;
+
     public class HelloWorldRepo : BaseRepository, IHelloWorldRepo
     {
-        
-
-        public HelloWorldRepo() : base()
+        public HelloWorldRepo()
+            : base()
         {
-           
         }
 
         public async Task<string> Get()
         {
-            return await QueryAsync(async c => await c.QuerySingleOrDefaultAsync<string>("SELECT 'HELLO WORLD'"));
+            return await this.QueryAsync(async c => await c.QuerySingleOrDefaultAsync<string>("SELECT 'HELLO WORLD'"));
         }
     }
 }

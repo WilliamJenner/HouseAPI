@@ -1,19 +1,18 @@
-using NUnit.Framework;
-using Moq;
-using UserService.Controllers;
-using Microsoft.Extensions.Logging;
-using UserService.BLL;
-using UserService.DAL;
-using System.Threading.Tasks;
-using UserService.DAL.Interfaces;
-
 namespace UserServiceTests
 {
+    using System.Threading.Tasks;
+    using Microsoft.Extensions.Logging;
+    using Moq;
+    using NUnit.Framework;
+    using UserService.BLL;
+    using UserService.Controllers;
+    using UserService.DAL.Interfaces;
+
     public class HelloTests
     {
         private const string Hello_World = "Hello World!";
-        public HelloController helloController;
-        
+
+        public HelloController HelloController { get; set; }
 
         [SetUp]
         public void Setup()
@@ -22,8 +21,8 @@ namespace UserServiceTests
             var mockLogger = new Mock<ILogger<HelloController>>();
 
             // Create our mock HelloWorldRepo object, with explicitly defined behaviour (loose is default anyway)
-            Mock<IHelloWorldRepo> mockHelloWorldRepo = new Mock<IHelloWorldRepo>(MockBehavior.Loose);
-                
+            var mockHelloWorldRepo = new Mock<IHelloWorldRepo>(MockBehavior.Loose);
+
             // Setup Mock async get method
             mockHelloWorldRepo.Setup(arg => arg.Get())
                 // Setup return type
@@ -33,15 +32,15 @@ namespace UserServiceTests
             var mockHello = new Hello(mockHelloWorldRepo.Object);
 
             // HelloController to be used in testing, with our mock logger and our shimmed Hello object
-            this.helloController = new HelloController(mockLogger.Object, mockHello);
+            this.HelloController = new HelloController(mockLogger.Object, mockHello);
         }
 
         [Test]
         public void Test_Get_Returns()
         {
             // Act
-            var result = helloController.Get().Result;
-            
+            string result = this.HelloController.Get().Result;
+
             // Assert
             Assert.AreEqual(Hello_World, result);
         }

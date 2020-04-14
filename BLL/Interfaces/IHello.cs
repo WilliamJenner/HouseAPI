@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace UserService.BLL.Interfaces
+﻿namespace UserService.BLL.Interfaces
 {
+    using System.Threading.Tasks;
+
     public interface IHello
     {
         Task<string> Get();

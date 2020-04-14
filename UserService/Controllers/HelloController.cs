@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using UserService.BLL;
-using UserService.BLL.Interfaces;
-
-namespace UserService.Controllers
+﻿namespace UserService.Controllers
 {
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Logging;
+    using System.Threading.Tasks;
+    using UserService.BLL.Interfaces;
+
     [ApiController]
     [Route("[controller]")]
     public class HelloController : ControllerBase
@@ -18,14 +14,14 @@ namespace UserService.Controllers
 
         public HelloController(ILogger<HelloController> logger, IHello hello)
         {
-            _logger = logger;
-            _hello = hello;
+            this._logger = logger;
+            this._hello = hello;
         }
 
         [HttpGet]
         public async Task<string> Get()
         {
-            return await _hello.Get();
+            return await this._hello.Get();
         }
     }
 }
