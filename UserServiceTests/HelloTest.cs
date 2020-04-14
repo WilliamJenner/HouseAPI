@@ -24,7 +24,7 @@ namespace UserServiceTests
             var mockHelloWorldRepo = new Mock<IHelloWorldRepo>(MockBehavior.Loose);
 
             // Setup Mock async get method
-            mockHelloWorldRepo.Setup(arg => arg.Get())
+            mockHelloWorldRepo.Setup(repo => repo.Get())
                 // Setup return type
                 .Returns(Task.FromResult(Hello_World));
 

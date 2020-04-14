@@ -7,10 +7,10 @@
 
     public class BaseRepository
     {
-        private readonly string _connectionString = "Server=tcp:weeklydigest.database.windows.net,1433;Initial Catalog=weeklydigest;Persist Security Info=False;User ID=jeremy;Password=yqcSjQYrV0pY8i85fmZZ;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
-
-        protected BaseRepository()
+        private readonly string _connectionString;
+        protected BaseRepository(string connectionString)
         {
+            _connectionString = connectionString;
         }
 
         protected async Task<T> QueryAsync<T>(Func<IDbConnection, Task<T>> getData)

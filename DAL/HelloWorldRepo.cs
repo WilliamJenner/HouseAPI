@@ -6,8 +6,9 @@
 
     public class HelloWorldRepo : BaseRepository, IHelloWorldRepo
     {
-        public HelloWorldRepo()
-            : base()
+        
+
+        public HelloWorldRepo(ConnectionStrings connectionStrings) : base(connectionStrings.WeeklyDigest)
         {
         }
 

@@ -12,12 +12,12 @@ namespace UserService
 
     public class Startup
     {
+        public IConfiguration Configuration { get; }
+
         public Startup(IConfiguration configuration)
         {
             this.Configuration = configuration;
         }
-
-        public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -25,6 +25,10 @@ namespace UserService
             services.AddControllers();
             services.AddSingleton<IHelloWorldRepo, HelloWorldRepo>();
             services.AddSingleton<IHello, Hello>();
+            services.AddSingleton(provider => new ConnectionStrings
+            {
+                WeeklyDigest = Configuration.GetConnectionString("WeeklyDigest")
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
