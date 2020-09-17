@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace UserService.DAL
+namespace House.DAL
 {
     public class ConnectionStrings
     {

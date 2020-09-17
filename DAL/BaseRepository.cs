@@ -1,4 +1,4 @@
-﻿namespace UserService.DAL
+﻿namespace House.DAL
 {
     using System;
     using System.Data;
