@@ -5,10 +5,9 @@ namespace House
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
-    using House.BLL;
-    using House.BLL.Interfaces;
+    using House.HLL;
     using House.DAL;
-    using House.DAL.Interfaces;
+    using House.HLL.Models;
     using Scrutor;
     using System.CodeDom.Compiler;
     using Microsoft.OpenApi.Models;
@@ -28,11 +27,11 @@ namespace House
             services.AddControllers();
             services.AddSingleton(provider => new ConnectionStrings
             {
-                WeeklyDigest = Configuration.GetConnectionString("WeeklyDigest")
+                WeeklyDigest = this.Configuration.GetConnectionString("WeeklyDigest")
             });
             services.AddSwaggerGen(c =>
             {
-                c.GeneratePolymorphicSchemas();
+                c.UseOneOfForPolymorphism();
 
                 c.SwaggerDoc("v1", new OpenApiInfo
                 {
@@ -51,13 +50,16 @@ namespace House
 
             });
 
+            services.Configure<Lookup>(option => this.Configuration.GetSection("Lookup").Bind(option));
+            services.Configure<AppSettings>(option => this.Configuration.GetSection("AppSettings").Bind(option));
+
             ScanForAllRemainingRegistrations(services);
         }
 
         public static void ScanForAllRemainingRegistrations(IServiceCollection services)
         {
             services.Scan(scan => scan
-                .FromAssembliesOf(typeof(Startup), typeof(Hello), typeof(BaseRepository))
+                .FromAssembliesOf(typeof(Startup), typeof(BindicatorProvider), typeof(BaseRepository))
                 .AddClasses(x => x.WithoutAttribute(typeof(GeneratedCodeAttribute)))
                 .UsingRegistrationStrategy(RegistrationStrategy.Skip)
                 .AsImplementedInterfaces()
