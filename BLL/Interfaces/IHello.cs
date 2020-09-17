@@ -1,4 +1,4 @@
-﻿namespace UserService.BLL.Interfaces
+﻿namespace House.BLL.Interfaces
 {
     using System.Threading.Tasks;
 

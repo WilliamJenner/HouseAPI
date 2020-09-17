@@ -1,4 +1,4 @@
-﻿namespace UserService.BLL
+﻿namespace House.BLL
 {
     internal class BaseClass
     {

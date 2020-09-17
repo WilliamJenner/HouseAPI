@@ -1,4 +1,4 @@
-﻿namespace UserService.DAL.Interfaces
+﻿namespace House.DAL.Interfaces
 {
     using System.Threading.Tasks;
 

@@ -15,7 +15,9 @@
 
 	<ItemGroup>
 		<PackageReference Include="System.Configuration.ConfigurationManager" Version="4.7.0" />
-		<ProjectReference Include="..\DAL\UserService.DAL.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <ProjectReference Include="..\DAL\House.DAL.csproj" />
+	</ItemGroup>
 </Project>

@@ -1,8 +1,9 @@
-﻿namespace UserService.BLL
+﻿namespace House.BLL
 {
     using System.Threading.Tasks;
-    using UserService.BLL.Interfaces;
-    using UserService.DAL.Interfaces;
+    using House.BLL.Interfaces;
+    using House.DAL.Interfaces;
+    using House;
 
     public class Hello : IHello
     {

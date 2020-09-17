@@ -1,9 +1,9 @@
-﻿namespace UserService.Controllers
+﻿namespace House.Controllers
 {
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Logging;
     using System.Threading.Tasks;
-    using UserService.BLL.Interfaces;
+    using House.BLL.Interfaces;
 
     [ApiController]
     [Route("[controller]")]
@@ -18,7 +18,7 @@
             this._hello = hello;
         }
 
-        [HttpGet]
+        [HttpGet("lol")]
         public async Task<string> Get()
         {
             return await this._hello.Get();

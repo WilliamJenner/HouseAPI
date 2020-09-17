@@ -1,4 +1,4 @@
-namespace UserService
+namespace House
 {
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.Extensions.Hosting;

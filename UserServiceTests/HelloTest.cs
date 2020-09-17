@@ -1,12 +1,9 @@
 namespace UserServiceTests
 {
     using System.Threading.Tasks;
-    using Microsoft.Extensions.Logging;
     using Moq;
     using NUnit.Framework;
-    using UserService.BLL;
-    using UserService.Controllers;
-    using UserService.DAL.Interfaces;
+    using House.Controllers;
 
     public class HelloTests
     {
