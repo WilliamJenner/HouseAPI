@@ -2,9 +2,10 @@
 {
     using Microsoft.AspNetCore.Mvc;
     using House.HLL.Models;
-    using Microsoft.Extensions.Logging;
     using System.Threading.Tasks;
     using House.HLL.Interfaces;
+    using Serilog;
+    using System;
 
     [ApiController]
     [Route("[controller]")]
@@ -20,7 +21,15 @@
         [HttpGet()]
         public async Task<BinLookupDto> Get()
         {
-            return await this._bindicatorProvider.Get();
+            try
+            {
+                return await this._bindicatorProvider.Get();
+            }
+            catch(Exception e)
+            {
+                Log.Error("Error Getting Bin Information", e);
+                throw;
+            }
         }
     }
 }
