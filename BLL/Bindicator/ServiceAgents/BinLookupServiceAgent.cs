@@ -1,7 +1,6 @@
 ﻿using House.HLL.Models;
 using House.HLL.ServiceAgents.Interfaces;
 using RestSharp;
-using House.HLL;
 using System;
 using Microsoft.Extensions.Options;
 using System.Threading.Tasks;
@@ -17,19 +16,19 @@ namespace Hosue.HLL.ServiceAgents
             _lookupClient = new RestClient(appSettings.Value.BCPCouncilUrl);
         }
 
-        public Task<BinLookupDto> Lookup(string uprn)
+        public Task<BinLookup> Lookup(string uprn)
         {
             var request = new RestRequest(Method.GET)
                 .AddParameter(nameof(uprn), uprn);
             return Retry.Do(() => GetBinData(request), TimeSpan.FromSeconds(1));
         }
 
-        private async Task<BinLookupDto> GetBinData(IRestRequest request)
+        private async Task<BinLookup> GetBinData(IRestRequest request)
         {
             var result = await _lookupClient.GetAsync<BinLookupDto>(request);
             if (result == null)
                 throw new NullReferenceException();
-            return result;
+            return new BinLookup(result);
         }
     }
 }

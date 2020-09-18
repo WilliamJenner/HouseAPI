@@ -11,6 +11,7 @@ namespace House
     using Scrutor;
     using System.CodeDom.Compiler;
     using Microsoft.OpenApi.Models;
+    using Microsoft.AspNetCore.Cors.Infrastructure;
 
     public class Startup
     {
@@ -50,6 +51,20 @@ namespace House
 
             });
 
+            // ********************
+            // Setup CORS
+            // ********************
+            var corsBuilder = new CorsPolicyBuilder();
+            corsBuilder.AllowAnyHeader();
+            corsBuilder.AllowAnyMethod();
+            corsBuilder.WithOrigins("https://localhost:44370"); // for a specific url. Don't add a forward slash on the end!
+            corsBuilder.AllowCredentials();
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("SiteCorsPolicy", corsBuilder.Build());
+            });
+
             services.Configure<Lookup>(option => this.Configuration.GetSection("Lookup").Bind(option));
             services.Configure<AppSettings>(option => this.Configuration.GetSection("AppSettings").Bind(option));
 
@@ -79,9 +94,13 @@ namespace House
                 app.UseHsts();
             }
 
+            app.UseCors("SiteCorsPolicy");
+
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseAuthorization();
 
             app.UseSwagger();
 
@@ -89,8 +108,6 @@ namespace House
             {
                 c.SwaggerEndpoint("../swagger/v1/swagger.json", "House API");
             });
-
-            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {

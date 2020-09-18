@@ -32,6 +32,7 @@ namespace Hosue.HLL
                 {
                     if (attempted > 0)
                     {
+                        retryInterval *= attempted; // on each attempt, multiple retry interval to backoff
                         System.Threading.Thread.Sleep(retryInterval);
                     }
                     return action();

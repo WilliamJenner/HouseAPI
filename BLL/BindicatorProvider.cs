@@ -19,7 +19,7 @@ namespace House.HLL
             uprn = options.Value.Uprn;
         }
 
-        public Task<BinLookupDto> Get()
+        public Task<BinLookup> Get()
         {
             return _bindicatorServiceAgent.Lookup(uprn);
         }

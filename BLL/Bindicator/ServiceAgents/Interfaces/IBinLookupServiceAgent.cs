@@ -5,6 +5,6 @@ namespace House.HLL.ServiceAgents.Interfaces
 {
     public interface IBinLookupServiceAgent
     {
-        Task<BinLookupDto> Lookup(string uprn);
+        Task<BinLookup> Lookup(string uprn);
     }
 }

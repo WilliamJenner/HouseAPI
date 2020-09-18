@@ -6,6 +6,7 @@
     using House.HLL.Interfaces;
     using Serilog;
     using System;
+    using Microsoft.AspNetCore.Cors;
 
     [ApiController]
     [Route("[controller]")]
