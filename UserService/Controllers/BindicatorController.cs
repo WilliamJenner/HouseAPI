@@ -20,7 +20,7 @@
         }
 
         [HttpGet()]
-        public async Task<BinLookupDto> Get()
+        public async Task<BinLookup> Get()
         {
             try
             {

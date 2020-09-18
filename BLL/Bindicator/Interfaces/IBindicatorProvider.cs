@@ -6,6 +6,6 @@ namespace House.HLL.Interfaces
 {
     public interface IBindicatorProvider
     {
-        Task<BinLookupDto> Get();
+        Task<BinLookup> Get();
     }
 }
