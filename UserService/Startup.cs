@@ -51,18 +51,15 @@ namespace House
 
             });
 
-            // ********************
-            // Setup CORS
-            // ********************
-            var corsBuilder = new CorsPolicyBuilder();
-            corsBuilder.AllowAnyHeader();
-            corsBuilder.AllowAnyMethod();
-            corsBuilder.WithOrigins("https://localhost:44370"); // for a specific url. Don't add a forward slash on the end!
-            corsBuilder.AllowCredentials();
-
             services.AddCors(options =>
             {
-                options.AddPolicy("SiteCorsPolicy", corsBuilder.Build());
+                options.AddPolicy("SiteCorsPolicy", builder =>
+                {
+                    builder
+                        .AllowAnyHeader()
+                        .WithMethods("GET", "POST", "PUT", "DELETE")
+                        .WithOrigins("http://localhost", "https://localhost", "https://localhost:44359", "https://localhost:44370");
+                });
             });
 
             services.Configure<Lookup>(option => this.Configuration.GetSection("Lookup").Bind(option));
