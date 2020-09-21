@@ -17,8 +17,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\UserService\House.API.csproj" />
+    <ProjectReference Include="..\API\House.API.csproj" />
     <ProjectReference Include="..\DAL\House.DAL.csproj" />
-    <ProjectReference Include="..\BLL\House.HLL.csproj" />
+    <ProjectReference Include="..\HLL\House.HLL.csproj" />
   </ItemGroup>
 </Project>
