@@ -1,12 +1,11 @@
-﻿namespace House.Controllers
+﻿namespace House.API.Controllers
 {
-    using Microsoft.AspNetCore.Mvc;
-    using House.HLL.Models;
-    using System.Threading.Tasks;
-    using House.HLL.Interfaces;
-    using Serilog;
     using System;
-    using Microsoft.AspNetCore.Cors;
+    using System.Threading.Tasks;
+    using Microsoft.AspNetCore.Mvc;
+    using Serilog;
+    using UserService.BLL.Bindicator.Interfaces;
+    using UserService.BLL.Bindicator.Models;
 
     [ApiController]
     [Route("[controller]")]
@@ -16,7 +15,7 @@
 
         public BindicatorController(IBindicatorProvider bindicatorProvider)
         {
-            this._bindicatorProvider = bindicatorProvider;
+            _bindicatorProvider = bindicatorProvider;
         }
 
         [HttpGet()]
@@ -24,7 +23,7 @@
         {
             try
             {
-                return await this._bindicatorProvider.Get();
+                return await _bindicatorProvider.Get();
             }
             catch(Exception e)
             {

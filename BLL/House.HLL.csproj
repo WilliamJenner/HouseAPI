@@ -24,7 +24,5 @@
 	</ItemGroup>
 	<ItemGroup>
 	  <Folder Include="Bindicator\ServiceAgents\" />
-	  <Folder Include="Bindicator\ServiceAgents\Interfaces\" />
-	  <Folder Include="Bindicator\Interfaces\" />
 	</ItemGroup>
 </Project>

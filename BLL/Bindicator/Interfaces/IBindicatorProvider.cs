@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
-using House.HLL.Models;
+using UserService.BLL.Bindicator.Models;
 
-namespace House.HLL.Interfaces
+namespace UserService.BLL.Bindicator.Interfaces
 {
     public interface IBindicatorProvider
     {

@@ -1,12 +1,9 @@
-﻿using System;
-using System.Threading.Tasks;
-using House.HLL.Interfaces;
-using House.HLL.Models;
-using House.HLL.ServiceAgents.Interfaces;
+﻿using System.Threading.Tasks;
 using Microsoft.Extensions.Options;
-using House.HLL.ServiceAgents;
+using UserService.BLL.Bindicator.Interfaces;
+using UserService.BLL.Bindicator.Models;
 
-namespace House.HLL
+namespace UserService.BLL
 {
     public class BindicatorProvider : IBindicatorProvider
     {

@@ -1,20 +1,19 @@
-namespace House
+namespace House.API
 {
+    using System;
+    using System.IO;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.Extensions.Hosting;
     using Serilog;
     using Serilog.Events;
     using Serilog.Formatting.Json;
-    using System;
-    using System.IO;
 
     public class Program
     {
         public static void Main(string[] args)
         {
             Log.Logger = new LoggerConfiguration()
-                .MinimumLevel.Error()
-                .MinimumLevel.Override("Microsoft", LogEventLevel.Error)
+                .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
                 .Enrich.FromLogContext()
                 .WriteTo.File(
                     new JsonFormatter(renderMessage: true),

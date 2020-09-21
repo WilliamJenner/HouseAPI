@@ -2,7 +2,7 @@
 {
     using System.Threading.Tasks;
     using Dapper;
-    using House.DAL.Interfaces;
+    using Interfaces;
 
     public class HelloWorldRepo : BaseRepository, IHelloWorldRepo
     {

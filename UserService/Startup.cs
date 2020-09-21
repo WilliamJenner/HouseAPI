@@ -1,17 +1,16 @@
-namespace House
+namespace House.API
 {
+    using System.CodeDom.Compiler;
+    using DAL;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
-    using House.HLL;
-    using House.DAL;
-    using House.HLL.Models;
-    using Scrutor;
-    using System.CodeDom.Compiler;
     using Microsoft.OpenApi.Models;
-    using Microsoft.AspNetCore.Cors.Infrastructure;
+    using Scrutor;
+    using UserService.BLL;
+    using UserService.BLL.Bindicator.Models;
 
     public class Startup
     {
@@ -19,7 +18,7 @@ namespace House
 
         public Startup(IConfiguration configuration)
         {
-            this.Configuration = configuration;
+            Configuration = configuration;
         }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -28,7 +27,7 @@ namespace House
             services.AddControllers();
             services.AddSingleton(provider => new ConnectionStrings
             {
-                WeeklyDigest = this.Configuration.GetConnectionString("WeeklyDigest")
+                WeeklyDigest = Configuration.GetConnectionString("WeeklyDigest")
             });
             services.AddSwaggerGen(c =>
             {
@@ -62,8 +61,8 @@ namespace House
                 });
             });
 
-            services.Configure<Lookup>(option => this.Configuration.GetSection("Lookup").Bind(option));
-            services.Configure<AppSettings>(option => this.Configuration.GetSection("AppSettings").Bind(option));
+            services.Configure<Lookup>(option => Configuration.GetSection("Lookup").Bind(option));
+            services.Configure<BindicatorAppSettings>(option => Configuration.GetSection("AppSettings").Bind(option));
 
             ScanForAllRemainingRegistrations(services);
         }

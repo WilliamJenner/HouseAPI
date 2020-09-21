@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace Hosue.HLL
+namespace UserService.BLL.Retry
 {
     public static class Retry
     {
