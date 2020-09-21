@@ -1,4 +1,4 @@
-﻿namespace UserService.BLL.Bindicator.Models
+﻿namespace House.HLL.Dashboard.Bindicator.Models
 {
     public class BinLookup
     {
@@ -11,6 +11,10 @@
             Rubbish = new Bin(dto.Rubbish);
             Recycling = new Bin(dto.Recycling);
             FoodWaste = new Bin(dto.FoodWaste);
+        }
+
+        public BinLookup()
+        {
         }
     }
 

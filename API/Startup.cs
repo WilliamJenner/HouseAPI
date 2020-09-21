@@ -9,8 +9,8 @@ namespace House.API
     using Microsoft.Extensions.Hosting;
     using Microsoft.OpenApi.Models;
     using Scrutor;
-    using UserService.BLL;
-    using UserService.BLL.Bindicator.Models;
+    using HLL.Dashboard.Bindicator;
+    using HLL.Dashboard.Bindicator.Models;
 
     public class Startup
     {
@@ -63,6 +63,7 @@ namespace House.API
 
             services.Configure<Lookup>(option => Configuration.GetSection("Lookup").Bind(option));
             services.Configure<BindicatorAppSettings>(option => Configuration.GetSection("AppSettings").Bind(option));
+            services.Configure<ApiKeys>(option => Configuration.GetSection("ApiKeys").Bind(option));
 
             ScanForAllRemainingRegistrations(services);
         }

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace UserService.BLL.Retry
+namespace House.HLL.Retry
 {
     public static class Retry
     {

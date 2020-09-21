@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Threading.Tasks;
+using House.HLL.Dashboard.Bindicator.Models;
+using House.HLL.Dashboard.WeatherFeed.Interfaces;
 using Microsoft.Extensions.Options;
 using RestSharp;
-using UserService.BLL.Bindicator.Interfaces;
-using UserService.BLL.Bindicator.Models;
 
-namespace UserService.BLL.Bindicator.ServiceAgents
+namespace House.HLL.Dashboard.WeatherFeed.ServiceAgents
 {
-    public class BinLookupServiceAgent : IBinLookupServiceAgent
+    public class WeatherServiceAgent : IWeatherServiceAgent
     {
         private readonly IRestClient _lookupClient;
 
-        public BinLookupServiceAgent(IOptions<BindicatorAppSettings> appSettings)
+        public WeatherServiceAgent(IOptions<BindicatorAppSettings> appSettings)
         {
             _lookupClient = new RestClient(appSettings.Value.BCPCouncilUrl);
         }

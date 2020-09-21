@@ -1,4 +1,4 @@
-﻿namespace UserService.BLL.Bindicator.Models
+﻿namespace House.HLL.Dashboard.Bindicator.Models
 {
     public class BindicatorAppSettings
     {

@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
-using UserService.BLL.Bindicator.Models;
+using House.HLL.Dashboard.Bindicator.Models;
 
-namespace UserService.BLL.Bindicator.Interfaces
+namespace House.HLL.Dashboard.Bindicator.Interfaces
 {
     public interface IBinLookupServiceAgent
     {

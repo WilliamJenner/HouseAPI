@@ -4,8 +4,8 @@
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Mvc;
     using Serilog;
-    using UserService.BLL.Bindicator.Interfaces;
-    using UserService.BLL.Bindicator.Models;
+    using HLL.Dashboard.Bindicator.Models;
+    using House.HLL.Dashboard.Bindicator.Interfaces;
 
     [ApiController]
     [Route("[controller]")]
