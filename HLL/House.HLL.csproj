@@ -9,6 +9,8 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+		<PackageReference Include="OpenWeatherMap.Standard" Version="1.3.0" />
 		<PackageReference Include="Serilog" Version="2.10.0" />
 		<PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
 		<PackageReference Include="RestSharp" Version="106.11.4" />
@@ -21,9 +23,5 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\DAL\House.DAL.csproj" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="Dashboard\WeatherFeed\Models\" />
 	</ItemGroup>
 </Project>

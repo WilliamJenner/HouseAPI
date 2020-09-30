@@ -11,6 +11,8 @@ namespace House.API
     using Scrutor;
     using HLL.Dashboard.Bindicator;
     using HLL.Dashboard.Bindicator.Models;
+    using HLL.Dashboard.WeatherFeed.Models;
+    using ConnectionStrings = HLL.Dashboard.WeatherFeed.Models.ConnectionStrings;
 
     public class Startup
     {
@@ -25,10 +27,7 @@ namespace House.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddSingleton(provider => new ConnectionStrings
-            {
-                WeeklyDigest = Configuration.GetConnectionString("WeeklyDigest")
-            });
+
             services.AddSwaggerGen(c =>
             {
                 c.UseOneOfForPolymorphism();
@@ -62,9 +61,9 @@ namespace House.API
             });
 
             services.Configure<Lookup>(option => Configuration.GetSection("Lookup").Bind(option));
-            services.Configure<BindicatorAppSettings>(option => Configuration.GetSection("AppSettings").Bind(option));
-            services.Configure<ApiKeys>(option => Configuration.GetSection("ApiKeys").Bind(option));
-
+            services.Configure<ConnectionStrings>(option => Configuration.GetSection("ConnectionStrings").Bind(option));
+            services.Configure<OpenWeatherApi>(option => Configuration.GetSection("OpenWeatherApi").Bind(option));
+            services.Configure<DbConnections>(option => Configuration.GetSection("DbConnections").Bind(option));
             ScanForAllRemainingRegistrations(services);
         }
 

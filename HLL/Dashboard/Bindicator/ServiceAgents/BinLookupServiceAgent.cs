@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
+using House.HLL.Dashboard.Bindicator.Interfaces;
 using House.HLL.Dashboard.Bindicator.Models;
+using House.HLL.Dashboard.WeatherFeed.Models;
 using Microsoft.Extensions.Options;
 using RestSharp;
 
@@ -10,9 +12,9 @@ namespace House.HLL.Dashboard.Bindicator.ServiceAgents
     {
         private readonly IRestClient _lookupClient;
 
-        public BinLookupServiceAgent(IOptions<BindicatorAppSettings> appSettings)
+        public BinLookupServiceAgent(IOptions<ConnectionStrings> connectionStrings)
         {
-            _lookupClient = new RestClient(appSettings.Value.BCPCouncilUrl);
+            _lookupClient = new RestClient(connectionStrings.Value.BCPCouncil);
         }
 
         public Task<BinLookup> Lookup(string uprn)

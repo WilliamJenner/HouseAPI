@@ -2,6 +2,5 @@
 {
     public class BindicatorAppSettings
     {
-        public string BCPCouncilUrl { get; set; }
     }
 }

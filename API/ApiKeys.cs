@@ -4,3 +4,4 @@
     {
         public string openWeatherApi { get; set; }
     }
+}

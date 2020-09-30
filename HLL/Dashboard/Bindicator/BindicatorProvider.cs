@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using House.HLL.Dashboard.Bindicator.Interfaces;
 using House.HLL.Dashboard.Bindicator.Models;
 using Microsoft.Extensions.Options;
 
