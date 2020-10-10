@@ -9,6 +9,7 @@ namespace House.DAL.DataTransferObjects
         public int EventType { get; set; }
         public int Unit { get; set; }
         public string EventLeader { get; set; }
+        public bool Expired { get; set; }
         public int Id { get; set; }
     }
 }

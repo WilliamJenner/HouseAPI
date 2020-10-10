@@ -6,8 +6,9 @@
     using HLL.UniEvent.Interfaces;
     using Microsoft.AspNetCore.Mvc;
     using HLL.UniEvent.Models;
+    using House.HLL.Common;
 
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class UniEventController : ControllerBase
     {
@@ -30,6 +31,12 @@
             return _uniEventProvider.Get(id);
         }
 
+        [HttpPost("get")]
+        public Task<IEnumerable<UniEvent>> Get([FromBody] IEnumerable<int> ids)
+        {
+            return _uniEventProvider.Get(ids);
+        }
+
         [HttpPost]
         public void Post([FromBody] NewUniEvent newEvent)
         {
@@ -47,5 +54,25 @@
         {
             _uniEventProvider.Delete(id);
         }
+
+        [HttpPost("GetMultipleTimetables")]
+        public void RetrieveTimetableRowsBatched([FromBody] List<KeyValue>cookies)
+        {
+            cookies.ForEach(x=>_uniEventProvider.RetrieveTimetableRows(x));
+        }
+
+        [HttpPost("GetTimetable")]
+        public void RetrieveTimetableRows([FromBody] KeyValue cookie) =>
+            RetrieveTimetableRowsBatched(new List<KeyValue>{ cookie });
+
+        [HttpGet("DeDupe")]
+        public void RunDeDupe()
+        {
+            _uniEventProvider.RunDedupe();
+        }
+        
+            
+        
+
     }
 }

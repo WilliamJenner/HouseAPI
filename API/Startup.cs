@@ -12,7 +12,7 @@ namespace House.API
     using HLL.Dashboard.Bindicator;
     using HLL.Dashboard.Bindicator.Models;
     using HLL.Dashboard.WeatherFeed.Models;
-    using ConnectionStrings = HLL.Dashboard.WeatherFeed.Models.ConnectionStrings;
+    using ConnectionStrings = HLL.ConnectionStrings;
 
     public class Startup
     {

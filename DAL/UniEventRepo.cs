@@ -1,16 +1,17 @@
-﻿using System.Collections.Generic;
-using Microsoft.Extensions.Options;
-using System.Threading.Tasks;
-using Dapper;
-using House.DAL.DataTransferObjects;
-using House.DAL.Interfaces;
-using House.DAL.SQL;
+﻿using System.Linq;
 
 namespace House.DAL
 {
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+    using Dapper;
+    using House.DAL.DataTransferObjects;
+    using House.DAL.Interfaces;
+    using House.DAL.SQL;
+    using Microsoft.Extensions.Options;
+
     public class UniEventRepo : BaseRepository, IUniEventRepo
     {
-
         public UniEventRepo(IOptions<DbConnections> connectionStrings)
             : base(connectionStrings.Value.HouseSql)
         {
@@ -29,6 +30,14 @@ namespace House.DAL
             }));
         }
 
+        public Task<IEnumerable<UniEventDto>> Get(IEnumerable<int> ids)
+        {
+            return ExecuteFunc(qry => qry.QueryAsync<UniEventDto>(UniEventSql.GetByIds, new
+            {
+                Id = ids,
+            }));
+        }
+
         public void Post(NewUniEvent newEvent)
         {
             var result = ExecuteFunc(qry => qry.ExecuteAsync(UniEventSql.Insert(), new
@@ -37,8 +46,13 @@ namespace House.DAL
                 EndTime = newEvent.EndTime,
                 Unit = (int)newEvent.Unit,
                 EventType = (int)newEvent.EventType,
-                EventLeader = newEvent.EventLeader,
+                EventLeader = newEvent.EventLeader.Length > 50 ? newEvent.EventLeader.PadRight(newEvent.EventLeader.Length).Substring(0, 49) : newEvent.EventLeader,
             }));
+        }
+
+        public void PostBulk(List<NewUniEvent> newEvents)
+        {
+             ExecuteFunc(qry => qry.ExecuteAsync(UniEventSql.InsertBulk(newEvents, false)));
         }
 
         public void Put(int id, NewUniEvent newEvent)
