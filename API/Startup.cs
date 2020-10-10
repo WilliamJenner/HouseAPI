@@ -86,7 +86,6 @@ namespace House.API
             }
             else
             {
-                app.UseExceptionHandler();
                 app.UseHsts();
             }
 
