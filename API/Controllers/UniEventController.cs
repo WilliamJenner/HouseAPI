@@ -56,23 +56,23 @@
         }
 
         [HttpPost("GetMultipleTimetables")]
-        public void RetrieveTimetableRowsBatched([FromBody] List<KeyValue>cookies)
+        public void RetrieveTimetableRowsBatched([FromBody] List<KeyValue> cookies)
         {
-            cookies.ForEach(x=>_uniEventProvider.RetrieveTimetableRows(x));
+            cookies.ForEach(x => _uniEventProvider.RetrieveTimetableRows(x));
         }
 
         [HttpPost("GetTimetable")]
         public void RetrieveTimetableRows([FromBody] KeyValue cookie) =>
-            RetrieveTimetableRowsBatched(new List<KeyValue>{ cookie });
+            RetrieveTimetableRowsBatched(new List<KeyValue> { cookie });
 
         [HttpGet("DeDupe")]
         public void RunDeDupe()
         {
             _uniEventProvider.RunDedupe();
         }
-        
-            
-        
+
+
+
 
     }
 }

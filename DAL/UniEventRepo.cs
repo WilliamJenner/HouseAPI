@@ -1,8 +1,7 @@
-﻿using System.Linq;
-
-namespace House.DAL
+﻿namespace House.DAL
 {
     using System.Collections.Generic;
+    using System.Linq;
     using System.Threading.Tasks;
     using Dapper;
     using House.DAL.DataTransferObjects;
@@ -50,9 +49,9 @@ namespace House.DAL
             }));
         }
 
-        public void PostBulk(List<NewUniEvent> newEvents)
+        public async void PostBulk(List<NewUniEvent> newEvents)
         {
-             ExecuteFunc(qry => qry.ExecuteAsync(UniEventSql.InsertBulk(newEvents, false)));
+            await ExecuteFunc(qry => qry.ExecuteAsync(UniEventSql.InsertBulk(newEvents, false)));
         }
 
         public void Put(int id, NewUniEvent newEvent)

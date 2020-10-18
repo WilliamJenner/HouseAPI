@@ -21,8 +21,8 @@ namespace House.HLL.UniEvent.Models
         {
             StartTime = dto.StartTime;
             EndTime = dto.EndTime;
-            EventType = (UniEventType) dto.EventType;
-            Unit = (Unit) dto.Unit;
+            EventType = (UniEventType)dto.EventType;
+            Unit = (Unit)dto.Unit;
             EventLeader = dto.EventLeader;
             Id = dto.Id;
         }
@@ -38,13 +38,13 @@ namespace House.HLL.UniEvent.Models
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != this.GetType()) return false;
-            return Equals((UniEvent) obj);
+            if (obj.GetType() != GetType()) return false;
+            return Equals((UniEvent)obj);
         }
 
         public override int GetHashCode()
         {
-            return HashCode.Combine(StartTime, EndTime, (int) EventType, (int) Unit, EventLeader);
+            return HashCode.Combine(StartTime, EndTime, (int)EventType, (int)Unit, EventLeader);
         }
     }
 }

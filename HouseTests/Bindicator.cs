@@ -11,6 +11,6 @@ namespace HouseTests
     public class Bindicator
     {
 
-      
+
     }
 }

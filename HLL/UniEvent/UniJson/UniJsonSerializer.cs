@@ -35,13 +35,13 @@ namespace House.HLL.UniEvent.UniJson
             switch (moduleTypeName)
             {
                 case "Lecture":
-                    return (int) UniEventType.Lecture;
+                    return (int)UniEventType.Lecture;
                 case "LAB":
-                    return (int) UniEventType.Lab;
+                    return (int)UniEventType.Lab;
                 case "Seminar":
-                    return (int) UniEventType.Seminar;
+                    return (int)UniEventType.Seminar;
                 default:
-                    return (int) UniEventType.Unknown;
+                    return (int)UniEventType.Unknown;
             }
         }
 

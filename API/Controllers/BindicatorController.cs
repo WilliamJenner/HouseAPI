@@ -25,7 +25,7 @@
             {
                 return await _bindicatorProvider.Get();
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Log.Error("Error Getting Bin Information", e);
                 throw;
