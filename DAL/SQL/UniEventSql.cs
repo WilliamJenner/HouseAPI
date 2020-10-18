@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Text;
-using House.DAL.DataTransferObjects;
-
-namespace House.DAL.SQL
+﻿namespace House.DAL.SQL
 {
+    using System.Collections.Generic;
+    using System.Text;
+    using House.DAL.DataTransferObjects;
+
     public static class UniEventSql
     {
         public const string UsingTable = "USE [UniEvent]";
@@ -77,7 +77,7 @@ namespace House.DAL.SQL
                     $@"('{newEvent.StartTime:yyyy-MM-dd HH:mm:ss}',
                     '{newEvent.EndTime:yyyy-MM-dd HH:mm:ss}', 
                     {newEvent.Unit}, {newEvent.EventType}, 
-                    '{(newEvent.EventLeader.Length > 50 ? newEvent.EventLeader.PadRight(newEvent.EventLeader.Length).Substring(0,49) : newEvent.EventLeader)}'),");
+                    '{(newEvent.EventLeader.Length > 50 ? newEvent.EventLeader.PadRight(newEvent.EventLeader.Length).Substring(0, 49) : newEvent.EventLeader)}'),");
             }
 
             return newInsert.ToString().TrimEnd(',');

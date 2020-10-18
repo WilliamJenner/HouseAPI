@@ -1,6 +1,4 @@
-﻿// For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
-namespace House.API.Controllers
+﻿namespace House.API.Controllers
 {
     using House.API.Models.Request;
     using House.DAL;
@@ -17,7 +15,7 @@ namespace House.API.Controllers
             _requestRepository = requestRepository;
         }
 
-       [HttpGet]
+        [HttpGet]
         public IActionResult Index()
         {
             return View();
@@ -30,19 +28,13 @@ namespace House.API.Controllers
         }
 
         [HttpPost("ExpireRows")]
-        public async Task<bool> ExpireRows()
-        {
-            return await _requestRepository.ExpireRequestItems();
-        }
+        public async Task<bool> ExpireRows() => await _requestRepository.ExpireRequestItems();
 
         [HttpPost("SubmitRequest")]
-        public async Task<bool> SubmitRequest(RequestModel model)
+        public async Task<bool> SubmitRequest(RequestModel model) => await _requestRepository.SaveRequestItem(new SaveItemRequest
         {
-            return await _requestRepository.SaveRequestItem(new SaveItemRequest
-            {
-                Amount = model.Amount,
-                Requester = model.Requester
-            });
-        }
+            Amount = model.Amount,
+            Requester = model.Requester
+        });
     }
 }

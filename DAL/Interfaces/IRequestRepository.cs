@@ -1,7 +1,7 @@
-﻿using System.Threading.Tasks;
-
-namespace House.DAL
+﻿namespace House.DAL
 {
+    using System.Threading.Tasks;
+
     public interface IRequestRepository
     {
         public Task<bool> SaveRequestItem(SaveItemRequest request);

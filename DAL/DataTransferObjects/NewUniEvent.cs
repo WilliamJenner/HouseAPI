@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace House.DAL.DataTransferObjects
+﻿namespace House.DAL.DataTransferObjects
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Text;
+
     public class NewUniEvent
     {
         public DateTime StartTime { get; set; }

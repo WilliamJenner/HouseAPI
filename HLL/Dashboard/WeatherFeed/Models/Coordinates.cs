@@ -10,7 +10,7 @@ namespace House.HLL.Dashboard.WeatherFeed.Models
     {
         [JsonProperty("lon")]
         public decimal Longitude { get; set; }
-        
+
         [JsonProperty("lat")]
         public decimal Latitude { get; set; }
     }

@@ -28,7 +28,7 @@
             {
                 return _weatherProvider.Get();
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Log.Error("Error Getting Weather Information", e);
                 throw;
