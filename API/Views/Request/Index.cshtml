@@ -1,0 +1,22 @@
+﻿@model House.API.Models.Request.RequestModel
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.11/jquery.validate.unobtrusive.min.js"></script>
+<div style="text-align:center">
+    <h1>Whachu Need?</h1>
+    @using (Html.BeginForm("SubmitRequest", "RequestController", FormMethod.Post))
+    {
+    <div class="form-group">
+    @Html.LabelFor(x => x.Requester)
+    @Html.EditorFor(x => x.Requester, new { @class = "form-control", placeholder = nameof(Model.Requester) })
+    @Html.ValidationMessageFor(x => x.Requester)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.Amount)
+        @Html.EditorFor(x => x.Amount, new { @class = "form-control", placeholder = nameof(Model.Amount) })
+        @Html.ValidationMessageFor(x => x.Amount)
+    </div>
+    <button class="btn btn-primary" type="submit" value="submit">Submit!</button>
+    }
+</div>
