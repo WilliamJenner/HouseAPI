@@ -49,6 +49,8 @@ namespace House.API
 
             });
 
+            services.AddMvc(options => options.EnableEndpointRouting = false);
+
             services.AddCors(options =>
             {
                 options.AddPolicy("SiteCorsPolicy", builder =>
@@ -92,6 +94,8 @@ namespace House.API
             app.UseCors("SiteCorsPolicy");
 
             app.UseHttpsRedirection();
+
+            app.UseMvc();
 
             app.UseRouting();
 

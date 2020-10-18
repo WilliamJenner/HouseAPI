@@ -22,4 +22,10 @@
       <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\" />
+    <Folder Include="Views\Request\" />
+    <Folder Include="Models\" />
+    <Folder Include="Models\Request\" />
+  </ItemGroup>
 </Project>
