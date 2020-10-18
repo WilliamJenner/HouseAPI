@@ -11,5 +11,7 @@
         [Display(Name = "Whachu need:")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "Enter what you need!")]
         public decimal Amount { get; set; }
+        
+        public bool? Success { get; set; }
     }
 }

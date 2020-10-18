@@ -16,9 +16,12 @@
         }
 
         [HttpGet]
-        public IActionResult Index()
+        public IActionResult Index(bool? success)
         {
-            return View();
+            return View("Index",new RequestModel
+            {
+                Success = success
+            });
         }
 
         [HttpGet("expire")]
@@ -31,10 +34,14 @@
         public async Task<bool> ExpireRows() => await _requestRepository.ExpireRequestItems();
 
         [HttpPost("SubmitRequest")]
-        public async Task<bool> SubmitRequest(RequestModel model) => await _requestRepository.SaveRequestItem(new SaveItemRequest
+        public async Task<IActionResult> SubmitRequest(RequestModel model)
         {
-            Amount = model.Amount,
-            Requester = model.Requester
-        });
+            return Index(await _requestRepository.SaveRequestItem(new SaveItemRequest
+            {
+                Amount = model.Amount,
+                Requester = model.Requester
+            }));
+            
+        }
     }
 }

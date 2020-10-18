@@ -3,20 +3,32 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.11/jquery.validate.unobtrusive.min.js"></script>
-<div style="text-align:center">
+<div class="container "style="text-align:center">
     <h1>Whachu Need?</h1>
+    @if (Model.Success == true)
+    {
+    <div class="alert alert-success" role="alert">
+        Request Logged!
+    </div>
+    }
+    @if (Model.Success == false)
+    {
+    <div class="alert alert-danger" role="alert">
+        An error occured.
+    </div>
+    }
     @using (Html.BeginForm("SubmitRequest", "Request", FormMethod.Post))
     {
-    <div class="form-group">
-    @Html.LabelFor(x => x.Requester)
-    @Html.EditorFor(x => x.Requester, new { @class = "form-control", placeholder = nameof(Model.Requester) })
-    @Html.ValidationMessageFor(x => x.Requester)
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(x => x.Amount)
-        @Html.EditorFor(x => x.Amount, new { @class = "form-control", placeholder = nameof(Model.Amount) })
-        @Html.ValidationMessageFor(x => x.Amount)
-    </div>
-    <button class="btn btn-primary" type="submit" value="submit">Submit!</button>
+        <div class="form-group">
+            @Html.LabelFor(x => x.Requester)
+            @Html.EditorFor(x => x.Requester, new { @class = "form-control", placeholder = nameof(Model.Requester) })
+            @Html.ValidationMessageFor(x => x.Requester)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(x => x.Amount)
+            @Html.EditorFor(x => x.Amount, new { @class = "form-control", placeholder = nameof(Model.Amount) })
+            @Html.ValidationMessageFor(x => x.Amount)
+        </div>
+        <button class="btn btn-primary" type="submit" value="submit">Submit!</button>
     }
 </div>
