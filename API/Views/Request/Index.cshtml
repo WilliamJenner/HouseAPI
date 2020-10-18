@@ -5,7 +5,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.11/jquery.validate.unobtrusive.min.js"></script>
 <div style="text-align:center">
     <h1>Whachu Need?</h1>
-    @using (Html.BeginForm("SubmitRequest", "RequestController", FormMethod.Post))
+    @using (Html.BeginForm("SubmitRequest", "Request", FormMethod.Post))
     {
     <div class="form-group">
     @Html.LabelFor(x => x.Requester)

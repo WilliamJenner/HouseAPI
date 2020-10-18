@@ -17,7 +17,7 @@ namespace House.API.Controllers
             _requestRepository = requestRepository;
         }
 
-       
+       [HttpGet]
         public IActionResult Index()
         {
             return View();
@@ -29,13 +29,13 @@ namespace House.API.Controllers
             return View();
         }
 
-        [HttpPost]
+        [HttpPost("ExpireRows")]
         public async Task<bool> ExpireRows()
         {
             return await _requestRepository.ExpireRequestItems();
         }
 
-        [HttpPost]
+        [HttpPost("SubmitRequest")]
         public async Task<bool> SubmitRequest(RequestModel model)
         {
             return await _requestRepository.SaveRequestItem(new SaveItemRequest

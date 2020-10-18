@@ -1,9 +1,9 @@
-﻿using System;
-namespace House.DAL.SQL
+﻿namespace House.DAL.SQL
 {
     public static class RequestRepoSql
     {
-        public const string SaveRequestItem = @"USE [Dashboard]
+        public const string SaveRequestItem = @"
+USE [Dashboard]
 GO
 
 INSERT INTO [dbo].[Requests]
@@ -14,14 +14,16 @@ INSERT INTO [dbo].[Requests]
            ,@Requester)
 GO";
 
-        public const string GetCurrentAmount = @"USE [Dashboard]
+        public const string GetCurrentAmount = @"
+USE [Dashboard]
 GO
 
 SELECT SUM(r.RequestedAmount)
 FROM Requests r
 WHERE r.Expired = 0";
 
-        public const string ExpireRequestItems = @"USE [Dashboard]
+        public const string ExpireRequestItems = @"
+USE [Dashboard]
 GO
 
 UPDATE Requests SET Expired = 1
