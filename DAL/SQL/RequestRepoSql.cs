@@ -15,9 +15,9 @@ INSERT INTO [dbo].[Requests]
         public const string GetCurrentAmount = @"
 USE [Dashboard]
 
-SELECT SUM(r.RequestedAmount)
+SELECT COALESCE(SUM(r.RequestedAmount), 0)
 FROM Requests r
-WHERE r.Expired = 0";
+WHERE r.Expired IS NULL";
 
         public const string ExpireRequestItems = @"
 USE [Dashboard]
