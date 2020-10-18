@@ -30,6 +30,9 @@
             return View();
         }
 
+        [HttpGet("amount")]
+        public async Task<decimal> GetTotalAmount() => await _requestRepository.GetAmountRequired();
+
         [HttpPost("ExpireRows")]
         public async Task<bool> ExpireRows() => await _requestRepository.ExpireRequestItems();
 
