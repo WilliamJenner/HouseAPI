@@ -3,6 +3,8 @@
     using System.Collections.Generic;
     using System.Threading.Tasks;
     using DAL.DataTransferObjects;
+    using HLL.Alert.Interfaces;
+    using HLL.Alert.Models;
     using HLL.UniEvent.Interfaces;
     using Microsoft.AspNetCore.Mvc;
     using HLL.UniEvent.Models;
@@ -12,47 +14,47 @@
     [ApiController]
     public class AlertController : ControllerBase
     {
-        private readonly IUniEventProvider _uniEventProvider;
+        private readonly IAlertProvider _alertProvider;
 
-        public AlertController(IUniEventProvider uniEventProvider)
+        public AlertController(IAlertProvider alertProvider)
         {
-            _uniEventProvider = uniEventProvider;
+            _alertProvider = alertProvider;
         }
 
         [HttpGet]
-        public Task<IEnumerable<UniEvent>> Get()
+        public Task<IEnumerable<Alert>> Get()
         {
-            return _uniEventProvider.Get();
+            return _alertProvider.Get();
         }
 
         [HttpGet("{id}", Name = "Get")]
-        public Task<IEnumerable<UniEvent>> Get(int id)
+        public Task<IEnumerable<Alert>> Get(int id)
         {
-            return _uniEventProvider.Get(id);
+            return _alertProvider.Get(id);
         }
 
         [HttpPost("get")]
-        public Task<IEnumerable<UniEvent>> Get([FromBody] IEnumerable<int> ids)
+        public Task<IEnumerable<Alert>> Get([FromBody] IEnumerable<int> ids)
         {
-            return _uniEventProvider.Get(ids);
+            return _alertProvider.Get(ids);
         }
 
         [HttpPost]
-        public void Post([FromBody] NewUniEvent newEvent)
+        public void Post([FromBody] NewAlert newAlert)
         {
-            _uniEventProvider.Post(newEvent);
+            _alertProvider.Post(newAlert);
         }
 
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] NewUniEvent newEvent)
+        public void Put(int id, [FromBody] NewAlert newAlert)
         {
-            _uniEventProvider.Put(id, newEvent);
+            _alertProvider.Put(id, newAlert);
         }
 
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
-            _uniEventProvider.Delete(id);
+            _alertProvider.Delete(id);
         }
     }
 }

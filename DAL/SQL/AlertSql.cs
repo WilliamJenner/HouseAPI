@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Text;
-using House.DAL.DataTransferObjects;
-
-namespace House.DAL.SQL
+﻿namespace House.DAL.SQL
 {
+    using System.Collections.Generic;
+    using System.Text;
+    using House.DAL.DataTransferObjects;
+
     public static class AlertSql
     {
         public const string UsingTable = "USE [Alert]";

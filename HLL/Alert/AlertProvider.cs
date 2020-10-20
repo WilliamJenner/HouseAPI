@@ -10,46 +10,44 @@ namespace House.HLL.Alert
 {
     public class AlertProvider : IAlertProvider
     {
-        private readonly IUniEventRepo _uniEventRepo;
+        private readonly IAlertRepo _alertRepo;
 
-        public AlertProvider(IUniEventRepo uniEventRepo)
+        public AlertProvider(IAlertRepo alertRepo)
         {
-            _uniEventRepo = uniEventRepo;
+            _alertRepo = alertRepo;
         }
 
-        // It's fine having this return all uni events due to small volume of data
-        // If we get to 1000 events, maybe rethink
         public async Task<IEnumerable<Models.Alert>> Get()
         {
-            var result = await _uniEventRepo.Get();
-            return result.Select(x => new UniEvent.Models.UniEvent(x));
+            var result = await _alertRepo.Get();
+            return result.Select(x => new Models.Alert(x));
         }
 
         public async Task<IEnumerable<Models.Alert>> Get(int id)
         {
-            var result = await _uniEventRepo.Get(id);
-            return result.Select(x => new UniEvent.Models.UniEvent(x));
+            var result = await _alertRepo.Get(id);
+            return result.Select(x => new Models.Alert(x));
         }
 
         public async Task<IEnumerable<Models.Alert>> Get(IEnumerable<int> id)
         {
-            var result = await _uniEventRepo.Get(id);
-            return result.Select(x => new UniEvent.Models.UniEvent(x));
+            var result = await _alertRepo.Get(id);
+            return result.Select(x => new Models.Alert(x));
         }
 
-        public void Post(NewAlert newEvent)
+        public void Post(NewAlert newAlert)
         {
-            _uniEventRepo.Post(newEvent);
+            _alertRepo.Post(newAlert);
         }
 
-        public void Put(int id, NewAlert newEvent)
+        public void Put(int id, NewAlert newAlert)
         {
-            _uniEventRepo.Put(id, newEvent);
+            _alertRepo.Put(id, newAlert);
         }
 
         public void Delete(int id)
         {
-            _uniEventRepo.Delete(id);
+            _alertRepo.Delete(id);
         }
     }
 }

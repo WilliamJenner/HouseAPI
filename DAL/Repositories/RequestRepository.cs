@@ -1,8 +1,9 @@
-﻿namespace House.DAL
+﻿namespace House.DAL.Repositories
 {
     using System;
     using System.Threading.Tasks;
     using Dapper;
+    using House.DAL.Interfaces;
     using House.DAL.SQL;
     using Microsoft.Extensions.Options;
     using Serilog;
