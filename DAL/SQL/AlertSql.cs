@@ -25,6 +25,19 @@
         ORDER BY [DateCreated] DESC
         ";
 
+        public static string GetLatest = $@"
+        {UsingTable}
+        SELECT TOP 10
+        [Id]
+        ,[Message]
+        ,[DateCreated]
+        ,[CreatedBy]
+        ,[Expired]
+        FROM [Dashboard].[dbo].[Alert]
+        WHERE Expired = 0
+        ORDER BY [DateCreated] DESC
+        ";
+
         public static string GetById = $"{GenericGet} AND Id = @Id";
 
         public static string GetByIds = $"{GenericGet} AND Id IN @Id";

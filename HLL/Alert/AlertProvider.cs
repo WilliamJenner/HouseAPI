@@ -23,6 +23,11 @@ namespace House.HLL.Alert
             return result.Select(x => new Models.Alert(x));
         }
 
+        public async Task<IEnumerable<Models.Alert>> GetLatestAlerts()
+        {
+            var result = await _alertRepo.Get();
+            return result.Select(x => new Models.Alert(x));
+        }
         public async Task<IEnumerable<Models.Alert>> Get(int id)
         {
             var result = await _alertRepo.Get(id);

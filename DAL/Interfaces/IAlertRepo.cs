@@ -7,6 +7,7 @@
     public interface IAlertRepo
     {
         Task<IEnumerable<AlertDto>> Get();
+        Task<IEnumerable<AlertDto>> GetLatest();
         Task<IEnumerable<AlertDto>> Get(int id);
         Task<IEnumerable<AlertDto>> Get(IEnumerable<int> ids);
         void Post(NewAlert newAlert);

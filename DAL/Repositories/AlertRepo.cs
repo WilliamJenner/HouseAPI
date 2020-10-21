@@ -23,6 +23,11 @@ namespace House.DAL
             return ExecuteFunc(qry => qry.QueryAsync<AlertDto>(AlertSql.Get));
         }
 
+        public Task<IEnumerable<AlertDto>> GetLatest()
+        {
+            return ExecuteFunc(qry => qry.QueryAsync<AlertDto>(AlertSql.GetLatest));
+        }
+
         public Task<IEnumerable<AlertDto>> Get(int id)
         {
             return ExecuteFunc(qry => qry.QueryAsync<AlertDto>(AlertSql.GetById, new

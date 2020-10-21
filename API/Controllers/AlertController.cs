@@ -27,6 +27,12 @@
             return _alertProvider.Get();
         }
 
+        [HttpGet]
+        public Task<IEnumerable<Alert>> GetLatestAlerts()
+        {
+            return _alertProvider.Get();
+        }
+
         [HttpGet("{id}")]
         public Task<IEnumerable<Alert>> Get(int id)
         {
