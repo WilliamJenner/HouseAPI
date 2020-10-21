@@ -1,6 +1,7 @@
-﻿namespace House.DAL
+﻿namespace House.DAL.Interfaces
 {
     using System.Threading.Tasks;
+    using House.DAL.Repositories;
 
     public interface IRequestRepository
     {

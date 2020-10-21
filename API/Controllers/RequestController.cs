@@ -4,6 +4,8 @@
     using House.DAL;
     using Microsoft.AspNetCore.Mvc;
     using System.Threading.Tasks;
+    using DAL.Interfaces;
+    using DAL.Repositories;
 
     [Route("request")]
     public class RequestController : Controller

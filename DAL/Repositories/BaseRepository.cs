@@ -1,4 +1,4 @@
-﻿namespace House.DAL
+﻿namespace House.DAL.Repositories
 {
     using System;
     using System.Data;
