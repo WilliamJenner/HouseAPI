@@ -21,13 +21,13 @@
             _alertProvider = alertProvider;
         }
 
-        [HttpGet]
+        [HttpGet("all")]
         public Task<IEnumerable<Alert>> Get()
         {
             return _alertProvider.Get();
         }
 
-        [HttpGet]
+        [HttpGet("GetLatest")]
         public Task<IEnumerable<Alert>> GetLatestAlerts()
         {
             return _alertProvider.Get();
@@ -39,13 +39,13 @@
             return _alertProvider.Get(id);
         }
 
-        [HttpPost("get")]
+        [HttpPost("GetMultiple")]
         public Task<IEnumerable<Alert>> Get([FromBody] IEnumerable<int> ids)
         {
             return _alertProvider.Get(ids);
         }
 
-        [HttpPost]
+        [HttpPost("NewAlert")]
         public void Post([FromBody] NewAlert newAlert)
         {
             _alertProvider.Post(newAlert);
