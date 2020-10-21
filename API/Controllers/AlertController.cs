@@ -27,7 +27,7 @@
             return _alertProvider.Get();
         }
 
-        [HttpGet("{id}", Name = "Get")]
+        [HttpGet("{id}")]
         public Task<IEnumerable<Alert>> Get(int id)
         {
             return _alertProvider.Get(id);

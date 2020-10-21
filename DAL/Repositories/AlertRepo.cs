@@ -1,4 +1,6 @@
-﻿namespace House.DAL
+﻿using House.DAL.Repositories;
+
+namespace House.DAL
 {
     using System.Collections.Generic;
     using System.Linq;
@@ -18,12 +20,12 @@
 
         public Task<IEnumerable<AlertDto>> Get()
         {
-            return ExecuteFunc(qry => qry.QueryAsync<UniEventDto>(AlertSql.Get));
+            return ExecuteFunc(qry => qry.QueryAsync<AlertDto>(AlertSql.Get));
         }
 
         public Task<IEnumerable<AlertDto>> Get(int id)
         {
-            return ExecuteFunc(qry => qry.QueryAsync<UniEventDto>(AlertSql.GetById, new
+            return ExecuteFunc(qry => qry.QueryAsync<AlertDto>(AlertSql.GetById, new
             {
                 Id = id,
             }));
@@ -31,45 +33,34 @@
 
         public Task<IEnumerable<AlertDto>> Get(IEnumerable<int> ids)
         {
-            return ExecuteFunc(qry => qry.QueryAsync<UniEventDto>(AlertSql.GetByIds, new
+            return ExecuteFunc(qry => qry.QueryAsync<AlertDto>(AlertSql.GetByIds, new
             {
                 Id = ids,
             }));
         }
 
-        public void Post(NewAlert newEvent)
+        public void Post(NewAlert newAlert)
         {
-            var result = ExecuteFunc(qry => qry.ExecuteAsync(AlertSql.Insert(), new
+            var result = ExecuteFunc(qry => qry.ExecuteAsync(AlertSql.Insert, new
             {
-                StartTime = newEvent.StartTime,
-                EndTime = newEvent.EndTime,
-                Unit = (int)newEvent.Unit,
-                EventType = (int)newEvent.EventType,
-                EventLeader = newEvent.EventLeader.Length > 50 ? newEvent.EventLeader.PadRight(newEvent.EventLeader.Length).Substring(0, 49) : newEvent.EventLeader,
+                Message = newAlert.Message,
+                CreatedBy = newAlert.CreatedBy,
             }));
         }
 
-        public void PostBulk(List<NewAlert> newEvents)
+        public void Put(int id, NewAlert newAlert)
         {
-             ExecuteFunc(qry => qry.ExecuteAsync(AlertSql.InsertBulk(newEvents, false)));
-        }
-
-        public void Put(int id, NewAlert newEvent)
-        {
-            var result = ExecuteFunc(qry => qry.ExecuteAsync(UniEventSql.Update, new
+            var result = ExecuteFunc(qry => qry.ExecuteAsync(AlertSql.Update, new
             {
-                StartTime = newEvent.StartTime,
-                EndTime = newEvent.EndTime,
-                Unit = (int)newEvent.Unit,
-                EventType = (int)newEvent.EventType,
-                EventLeader = newEvent.EventLeader,
                 Id = id,
+                Message = newAlert.Message,
+                CreatedBy = newAlert.CreatedBy,
             }));
         }
 
         public void Delete(int id)
         {
-            var result = ExecuteFunc(qry => qry.ExecuteAsync(UniEventSql.Delete, new
+            var result = ExecuteFunc(qry => qry.ExecuteAsync(AlertSql.Delete, new
             {
                 Id = id,
             }));

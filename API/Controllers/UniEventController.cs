@@ -25,7 +25,7 @@
             return _uniEventProvider.Get();
         }
 
-        [HttpGet("{id}", Name = "Get")]
+        [HttpGet("{id}")]
         public Task<IEnumerable<UniEvent>> Get(int id)
         {
             return _uniEventProvider.Get(id);

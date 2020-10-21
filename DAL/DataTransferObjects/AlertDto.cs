@@ -8,5 +8,6 @@
         public string Message { get; set; }
         public DateTime DateCreated { get; set; }
         public string CreatedBy { get; set; }
+        public bool Expired { get; set; }
     }
 }
