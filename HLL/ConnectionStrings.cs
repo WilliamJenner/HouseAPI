@@ -5,6 +5,5 @@
         public string BCPCouncil { get; set; }
         public string OpenWeather { get; set; }
         public string UniTimetable { get; set; }
-        public string NewsApi { get; set; }
     }
 }
