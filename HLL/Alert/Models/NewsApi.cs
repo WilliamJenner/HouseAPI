@@ -6,5 +6,6 @@ namespace House.HLL.Alert.Models
         public NewsApi()
         {
         }
+        public string Key { get; set; }
     }
 }
