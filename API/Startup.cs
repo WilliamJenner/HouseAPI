@@ -2,6 +2,7 @@ namespace House.API
 {
     using System.CodeDom.Compiler;
     using DAL;
+    using DAL.Repositories;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.Extensions.Configuration;
@@ -13,9 +14,6 @@ namespace House.API
     using HLL.Dashboard.Bindicator.Models;
     using HLL.Dashboard.WeatherFeed.Models;
     using ConnectionStrings = HLL.ConnectionStrings;
-    using House.HLL.Alert.Models;
-    using House.DAL.Repositories;
-    using House.API.CronJobs;
 
     public class Startup
     {
@@ -68,10 +66,7 @@ namespace House.API
             services.Configure<Lookup>(option => Configuration.GetSection("Lookup").Bind(option));
             services.Configure<ConnectionStrings>(option => Configuration.GetSection("ConnectionStrings").Bind(option));
             services.Configure<OpenWeatherApi>(option => Configuration.GetSection("OpenWeatherApi").Bind(option));
-            services.Configure<NewsApi>(option => Configuration.GetSection("NewsApi").Bind(option));
             services.Configure<DbConnections>(option => Configuration.GetSection("DbConnections").Bind(option));
-            services.AddTransient<AutoConsumeNews>();
-            services.AddHostedService<AutoConsumeNews>();
             ScanForAllRemainingRegistrations(services);
         }
 
