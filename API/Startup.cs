@@ -70,7 +70,6 @@ namespace House.API
             services.Configure<OpenWeatherApi>(option => Configuration.GetSection("OpenWeatherApi").Bind(option));
             services.Configure<NewsApi>(option => Configuration.GetSection("NewsApi").Bind(option));
             services.Configure<DbConnections>(option => Configuration.GetSection("DbConnections").Bind(option));
-            services.AddTransient<AutoConsumeNews>();
             services.AddHostedService<AutoConsumeNews>();
             ScanForAllRemainingRegistrations(services);
         }
@@ -82,7 +81,8 @@ namespace House.API
                 .AddClasses(x => x.WithoutAttribute(typeof(GeneratedCodeAttribute)))
                 .UsingRegistrationStrategy(RegistrationStrategy.Skip)
                 .AsImplementedInterfaces()
-                .WithScopedLifetime());
+                .WithTransientLifetime()); 
+            //To stop the hosted service crying register services as transient by default, not scoped. This API is stateless so shouldn't cause issues
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
