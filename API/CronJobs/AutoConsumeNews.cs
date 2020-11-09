@@ -5,6 +5,7 @@
     using System;
     using System.Threading.Tasks;
     using System.Threading;
+    using HLL.Alert.Interfaces;
     using House.HLL.Alert;
     using Microsoft.VisualStudio.Web.CodeGeneration.EntityFrameworkCore;
     using Serilog;
@@ -26,7 +27,7 @@
 
         public override Task StopAsync(CancellationToken cancellationToken)
         {
-            Log.Information($"stop {nameof(AutoConsumeNews)}");
+            Log.Information($"Stopping {nameof(AutoConsumeNews)}");
 
             return Task.CompletedTask;
         }

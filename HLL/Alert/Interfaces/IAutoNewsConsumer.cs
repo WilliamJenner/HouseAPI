@@ -1,6 +1,4 @@
-﻿using System.Threading.Tasks;
-
-namespace House.HLL.Alert
+﻿namespace House.HLL.Alert.Interfaces
 {
     public interface IAutoNewsConsumer
     {
