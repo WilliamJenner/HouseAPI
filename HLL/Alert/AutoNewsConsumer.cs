@@ -1,7 +1,4 @@
-﻿using System;
-using System.Linq;
-using System.Threading.Tasks;
-using House.DAL.Interfaces;
+﻿using System.Linq;
 using House.HLL.Alert.Interfaces;
 using House.HLL.Alert.Models;
 using Microsoft.Extensions.Options;

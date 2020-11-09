@@ -1,8 +1,6 @@
 ﻿namespace House.DAL.DataTransferObjects
 {
     using System;
-    using System.Collections.Generic;
-    using System.Text;
 
     public class NewUniEvent
     {

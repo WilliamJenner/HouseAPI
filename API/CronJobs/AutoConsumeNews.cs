@@ -6,8 +6,6 @@
     using System.Threading.Tasks;
     using System.Threading;
     using HLL.Alert.Interfaces;
-    using House.HLL.Alert;
-    using Microsoft.VisualStudio.Web.CodeGeneration.EntityFrameworkCore;
     using Serilog;
 
     public class AutoConsumeNews : BackgroundService
