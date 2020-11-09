@@ -1,8 +1,10 @@
 ﻿namespace House.DAL.Repositories
 {
     using System;
+    using System.Collections.Generic;
     using System.Threading.Tasks;
     using Dapper;
+    using House.DAL.DataTransferObjects;
     using House.DAL.Interfaces;
     using House.DAL.SQL;
     using Microsoft.Extensions.Options;
@@ -27,7 +29,7 @@
                 Log.Error(e, "Failed to save item");
                 return false;
             }
-            
+
         }
 
         public async Task<decimal> GetAmountRequired()
@@ -35,6 +37,19 @@
             try
             {
                 return await ExecuteFunc(qry => qry.QuerySingleAsync<decimal>(RequestRepoSql.GetCurrentAmount));
+            }
+            catch (Exception e)
+            {
+                Log.Error(e, "Failed to get amount");
+                throw;
+            }
+        }
+
+        public async Task<IEnumerable<RequestDto>> GetActiveRequests()
+        {
+            try
+            {
+                return await ExecuteFunc(qry => qry.QueryAsync<RequestDto>(RequestRepoSql.GetActiveRequests));
             }
             catch (Exception e)
             {

@@ -19,6 +19,13 @@ SELECT COALESCE(SUM(r.RequestedAmount), 0)
 FROM Requests r
 WHERE r.Expired IS NULL";
 
+        public const string GetActiveRequests = @"
+USE [Dashboard]
+
+SELECT r.Requester, r.RequestedAmount
+FROM Requests r
+WHERE r.Expired IS NULL";
+
         public const string ExpireRequestItems = @"
 USE [Dashboard]
 

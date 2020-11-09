@@ -6,6 +6,9 @@
     using System.Threading.Tasks;
     using DAL.Interfaces;
     using DAL.Repositories;
+    using System;
+    using System.Collections.Generic;
+    using House.DAL.DataTransferObjects;
 
     [Route("request")]
     public class RequestController : Controller
@@ -20,7 +23,7 @@
         [HttpGet]
         public IActionResult Index(bool? success)
         {
-            return View("Index",new RequestModel
+            return View("Index", new RequestModel
             {
                 Success = success
             });
@@ -34,6 +37,9 @@
 
         [HttpGet("amount")]
         public async Task<decimal> GetTotalAmount() => await _requestRepository.GetAmountRequired();
+        
+        [HttpGet("activeamount")]
+        public async Task<IEnumerable<RequestDto>> GetActiveRequests() => await _requestRepository.GetActiveRequests();
 
         [HttpPost("ExpireRows")]
         public async Task<bool> ExpireRows() => await _requestRepository.ExpireRequestItems();
