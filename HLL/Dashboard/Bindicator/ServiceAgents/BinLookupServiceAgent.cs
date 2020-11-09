@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using House.HLL.Dashboard.Bindicator.Interfaces;
 using House.HLL.Dashboard.Bindicator.Models;
-using House.HLL.Dashboard.WeatherFeed.Models;
 using Microsoft.Extensions.Options;
 using RestSharp;
 

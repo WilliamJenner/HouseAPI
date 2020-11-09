@@ -1,7 +1,14 @@
 namespace House.API
 {
     using System.CodeDom.Compiler;
+    using CronJobs;
     using DAL;
+    using DAL.Repositories;
+    using HLL;
+    using HLL.Alert.Models;
+    using HLL.Dashboard.Bindicator;
+    using HLL.Dashboard.Bindicator.Models;
+    using HLL.Dashboard.WeatherFeed.Models;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.Extensions.Configuration;
@@ -9,13 +16,6 @@ namespace House.API
     using Microsoft.Extensions.Hosting;
     using Microsoft.OpenApi.Models;
     using Scrutor;
-    using HLL.Dashboard.Bindicator;
-    using HLL.Dashboard.Bindicator.Models;
-    using HLL.Dashboard.WeatherFeed.Models;
-    using ConnectionStrings = HLL.ConnectionStrings;
-    using House.HLL.Alert.Models;
-    using House.DAL.Repositories;
-    using House.API.CronJobs;
 
     public class Startup
     {

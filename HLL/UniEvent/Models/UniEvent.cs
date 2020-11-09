@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using House.DAL.DataTransferObjects;
 
 namespace House.HLL.UniEvent.Models

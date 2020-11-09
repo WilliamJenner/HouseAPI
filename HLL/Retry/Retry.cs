@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
-using OpenWeatherMap.Standard.Models;
 
 namespace House.HLL.Retry
 {
@@ -21,7 +21,7 @@ namespace House.HLL.Retry
                     if (attempted > 0)
                     {
                         retryInterval *= attempted; // on each attempt, multiple retry interval to backoff
-                        System.Threading.Thread.Sleep(retryInterval);
+                        Thread.Sleep(retryInterval);
                     }
                     return action();
                 }
@@ -47,7 +47,7 @@ namespace House.HLL.Retry
                     if (attempted > 0)
                     {
                         retryInterval *= attempted; // on each attempt, multiple retry interval to backoff
-                        System.Threading.Thread.Sleep(retryInterval);
+                        Thread.Sleep(retryInterval);
                     }
                     return action();
                 }

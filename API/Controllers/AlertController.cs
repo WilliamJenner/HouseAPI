@@ -5,10 +5,7 @@
     using DAL.DataTransferObjects;
     using HLL.Alert.Interfaces;
     using HLL.Alert.Models;
-    using HLL.UniEvent.Interfaces;
     using Microsoft.AspNetCore.Mvc;
-    using HLL.UniEvent.Models;
-    using House.HLL.Common;
 
     [Route("[controller]")]
     [ApiController]

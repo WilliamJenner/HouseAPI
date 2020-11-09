@@ -48,7 +48,7 @@
         ";
 
         public static string Insert = 
-        $@"
+        @"
         USE [Dashboard]
 
         INSERT INTO [dbo].[Alert]

@@ -45,8 +45,7 @@ namespace House.DAL.Repositories
         {
             var result = ExecuteFunc(qry => qry.ExecuteAsync(AlertSql.Insert, new
             {
-                Message = newAlert.Message,
-                CreatedBy = newAlert.CreatedBy,
+                newAlert.Message, newAlert.CreatedBy,
             }));
         }
 
@@ -55,8 +54,8 @@ namespace House.DAL.Repositories
             var result = ExecuteFunc(qry => qry.ExecuteAsync(AlertSql.Update, new
             {
                 Id = id,
-                Message = newAlert.Message,
-                CreatedBy = newAlert.CreatedBy,
+                newAlert.Message,
+                newAlert.CreatedBy,
             }));
         }
 

@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using House.DAL.DataTransferObjects;
 using House.HLL.Alert.Interfaces;
 using House.HLL.Alert.Models;
 using Microsoft.Extensions.Options;
@@ -9,16 +10,14 @@ namespace House.HLL.Alert
 {
     public class AutoNewsConsumer : IAutoNewsConsumer
     {
-        private readonly string _apiKey;
         private readonly IRestClient _newsClient;
-        private readonly IAlertProvider alertProvider;
+        private readonly IAlertProvider _alertProvider;
 
 
         public AutoNewsConsumer(IOptions<NewsApi> options, IOptions<ConnectionStrings> connectionStrings, IAlertProvider alertProvider)
         {
-            _apiKey = options.Value.Key;
-            _newsClient = new RestClient($"{connectionStrings.Value.OpenWeather}{_apiKey}");
-            this.alertProvider = alertProvider;
+            _newsClient = new RestClient($"{connectionStrings.Value.OpenWeather}{options.Value.Key}");
+            _alertProvider = alertProvider;
         }
 
         public void Consume()
@@ -26,7 +25,7 @@ namespace House.HLL.Alert
             var news = GetNewsData();
             foreach(var item in news.Articles.Take(10))
             {
-                alertProvider.Post(new DAL.DataTransferObjects.NewAlert { Message = item.Title, CreatedBy = item.Source.Name });
+                _alertProvider.Post(new NewAlert { Message = item.Title, CreatedBy = item.Source.Name });
             }
         }
 

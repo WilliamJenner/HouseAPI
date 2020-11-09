@@ -1,11 +1,11 @@
 ﻿namespace House.API.CronJobs
 {
+    using System;
+    using System.Threading;
+    using System.Threading.Tasks;
+    using HLL.Alert.Interfaces;
     using Microsoft.Extensions.Hosting;
     using NCrontab;
-    using System;
-    using System.Threading.Tasks;
-    using System.Threading;
-    using HLL.Alert.Interfaces;
     using Serilog;
 
     public class AutoConsumeNews : BackgroundService

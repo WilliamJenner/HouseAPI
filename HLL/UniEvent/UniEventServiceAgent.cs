@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
-using System.Text;
 using House.HLL.Common;
-using House.HLL.Dashboard.WeatherFeed.Models;
 using House.HLL.UniEvent.Interfaces;
 using Microsoft.Extensions.Options;
-using Newtonsoft.Json;
 using RestSharp;
 using Serilog;
 
