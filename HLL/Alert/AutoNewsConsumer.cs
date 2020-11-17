@@ -16,7 +16,7 @@ namespace House.HLL.Alert
 
         public AutoNewsConsumer(IOptions<NewsApi> options, IOptions<ConnectionStrings> connectionStrings, IAlertProvider alertProvider)
         {
-            _newsClient = new RestClient($"{connectionStrings.Value.OpenWeather}{options.Value.Key}");
+            _newsClient = new RestClient($"{connectionStrings.Value.NewsApi}{options.Value.Key}");
             _alertProvider = alertProvider;
         }
 
