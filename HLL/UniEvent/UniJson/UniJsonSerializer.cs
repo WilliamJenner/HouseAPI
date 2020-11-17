@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using House.DAL.DataTransferObjects;
 using House.HLL.UniEvent.Models;
 using Newtonsoft.Json;
