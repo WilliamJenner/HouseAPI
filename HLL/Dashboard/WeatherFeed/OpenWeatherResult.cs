@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Text;
 using House.HLL.Dashboard.WeatherFeed.Models;
 
 namespace House.HLL.Dashboard.WeatherFeed

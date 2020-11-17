@@ -1,8 +1,14 @@
 namespace House.API
 {
     using System.CodeDom.Compiler;
+    using CronJobs;
     using DAL;
     using DAL.Repositories;
+    using HLL;
+    using HLL.Alert.Models;
+    using HLL.Dashboard.Bindicator;
+    using HLL.Dashboard.Bindicator.Models;
+    using HLL.Dashboard.WeatherFeed.Models;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.Extensions.Configuration;
@@ -10,10 +16,6 @@ namespace House.API
     using Microsoft.Extensions.Hosting;
     using Microsoft.OpenApi.Models;
     using Scrutor;
-    using HLL.Dashboard.Bindicator;
-    using HLL.Dashboard.Bindicator.Models;
-    using HLL.Dashboard.WeatherFeed.Models;
-    using ConnectionStrings = HLL.ConnectionStrings;
 
     public class Startup
     {
@@ -66,7 +68,9 @@ namespace House.API
             services.Configure<Lookup>(option => Configuration.GetSection("Lookup").Bind(option));
             services.Configure<ConnectionStrings>(option => Configuration.GetSection("ConnectionStrings").Bind(option));
             services.Configure<OpenWeatherApi>(option => Configuration.GetSection("OpenWeatherApi").Bind(option));
+            services.Configure<NewsApi>(option => Configuration.GetSection("NewsApi").Bind(option));
             services.Configure<DbConnections>(option => Configuration.GetSection("DbConnections").Bind(option));
+            services.AddHostedService<AutoConsumeNews>();
             ScanForAllRemainingRegistrations(services);
         }
 
@@ -77,7 +81,8 @@ namespace House.API
                 .AddClasses(x => x.WithoutAttribute(typeof(GeneratedCodeAttribute)))
                 .UsingRegistrationStrategy(RegistrationStrategy.Skip)
                 .AsImplementedInterfaces()
-                .WithScopedLifetime());
+                .WithTransientLifetime()); 
+            //To stop the hosted service crying register services as transient by default, not scoped. This API is stateless so shouldn't cause issues
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

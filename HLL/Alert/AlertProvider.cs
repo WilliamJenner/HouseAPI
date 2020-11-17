@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using House.DAL.DataTransferObjects;
 using House.DAL.Interfaces;
 using House.HLL.Alert.Interfaces;
-using House.HLL.Alert.Models;
 
 namespace House.HLL.Alert
 {

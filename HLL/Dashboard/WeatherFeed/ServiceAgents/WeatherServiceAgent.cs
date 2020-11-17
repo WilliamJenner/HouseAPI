@@ -6,7 +6,6 @@ using House.HLL.Dashboard.WeatherFeed.Models;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using RestSharp;
-using RestSharp.Serialization.Json;
 using Serilog;
 
 namespace House.HLL.Dashboard.WeatherFeed.ServiceAgents

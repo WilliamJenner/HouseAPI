@@ -1,14 +1,12 @@
 ﻿namespace House.API.Controllers
 {
-    using House.API.Models.Request;
-    using House.DAL;
-    using Microsoft.AspNetCore.Mvc;
+    using System.Collections.Generic;
     using System.Threading.Tasks;
+    using DAL.DataTransferObjects;
     using DAL.Interfaces;
     using DAL.Repositories;
-    using System;
-    using System.Collections.Generic;
-    using House.DAL.DataTransferObjects;
+    using Microsoft.AspNetCore.Mvc;
+    using Models.Request;
 
     [Route("request")]
     public class RequestController : Controller

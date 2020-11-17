@@ -1,9 +1,7 @@
-﻿namespace House.DAL.DataTransferObjects
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
+﻿using System;
 
+namespace House.DAL.DataTransferObjects
+{
     public class NewUniEvent
     {
         public DateTime StartTime { get; set; }

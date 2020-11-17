@@ -1,14 +1,10 @@
 ﻿namespace House.API.Controllers
 {
     using System;
-    using System.Threading.Tasks;
-    using Microsoft.AspNetCore.Mvc;
-    using Serilog;
-    using HLL.Dashboard.Bindicator.Models;
     using HLL.Dashboard.WeatherFeed.Interfaces;
     using HLL.Dashboard.WeatherFeed.Models;
-    using House.HLL.Dashboard.Bindicator.Interfaces;
-    using OpenWeatherMap.Standard.Models;
+    using Microsoft.AspNetCore.Mvc;
+    using Serilog;
 
     [ApiController]
     [Route("[controller]")]
@@ -21,7 +17,7 @@
             _weatherProvider = weatherProvider;
         }
 
-        [HttpGet()]
+        [HttpGet]
         public OpenWeatherCurrent Get()
         {
             try

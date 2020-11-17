@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace House.HLL.Common
+﻿namespace House.HLL.Common
 {
     public class KeyValue
     {

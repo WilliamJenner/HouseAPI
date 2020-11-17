@@ -1,9 +1,5 @@
 ﻿namespace House.DAL.SQL
 {
-    using System.Collections.Generic;
-    using System.Text;
-    using House.DAL.DataTransferObjects;
-
     public static class AlertSql
     {
         public const string UsingTable = "USE [Dashboard]";
@@ -52,7 +48,7 @@
         ";
 
         public static string Insert = 
-        $@"
+        @"
         USE [Dashboard]
 
         INSERT INTO [dbo].[Alert]

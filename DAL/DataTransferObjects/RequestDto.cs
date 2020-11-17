@@ -1,7 +1,5 @@
 ﻿namespace House.DAL.DataTransferObjects
 {
-    using System;
-
     public class RequestDto
     {
         public int Id { get; set; }
