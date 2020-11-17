@@ -20,10 +20,10 @@ namespace House.HLL.Alert
             _alertProvider = alertProvider;
         }
 
-        public void Consume()
+        public void Consume(int articlesToTake = 10)
         {
             var news = GetNewsData();
-            foreach(var item in news.Articles.Take(10))
+            foreach(var item in news.Articles.Take(articlesToTake))
             {
                 _alertProvider.Post(new NewAlert { Message = item.Title, CreatedBy = item.Source.Name });
             }

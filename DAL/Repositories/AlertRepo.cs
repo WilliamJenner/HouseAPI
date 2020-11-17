@@ -1,13 +1,13 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using Dapper;
-using House.DAL.DataTransferObjects;
-using House.DAL.Interfaces;
-using House.DAL.SQL;
-using Microsoft.Extensions.Options;
-
-namespace House.DAL.Repositories
+﻿namespace House.DAL.Repositories
 {
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+    using Dapper;
+    using House.DAL.DataTransferObjects;
+    using House.DAL.Interfaces;
+    using House.DAL.SQL;
+    using Microsoft.Extensions.Options;
+
     public class AlertRepo : BaseRepository, IAlertRepo
     {
         public AlertRepo(IOptions<DbConnections> connectionStrings)

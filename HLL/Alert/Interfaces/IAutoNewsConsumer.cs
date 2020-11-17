@@ -2,6 +2,6 @@
 {
     public interface IAutoNewsConsumer
     {
-        void Consume();
+        void Consume(int articlesToTake = 10);
     }
 }
