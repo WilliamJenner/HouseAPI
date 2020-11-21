@@ -43,7 +43,7 @@
         {
             try
             {
-                return _alertProvider.Get();
+                return _alertProvider.GetLatestAlerts();
             }
             catch (Exception e)
             {
